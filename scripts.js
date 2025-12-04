@@ -79,9 +79,9 @@ const myLucky = new LuckyCanvas.LuckyWheel('#my-lucky', {
         pointer: true,
         fonts: [{ 
             text: '开始', 
-            fontColor: white, 
+            fontColor: black, 
             fontWeight: 'bold', 
-            fontSize: '16px' 
+            fontSize: '12px' 
         }]
     }],
     start() {
