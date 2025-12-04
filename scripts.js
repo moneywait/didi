@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // 获取 DOM 元素
     const wheelContainer = document.getElementById('wheelContainer');
     const startButton = document.getElementById('startButton');
-    const emojiList = config.emojiList;
     const prizeMapping = config.prizes;
     const contactPerson = config.contactPerson;
     let isPlaying = false;
@@ -14,28 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalIcon = document.getElementById('modalIcon');
     const modalButton = document.getElementById('modalButton');
 
-    // 获取 CSS 主题色（用于转盘样式）
+    // 获取 CSS 主题色
     const styles = getComputedStyle(document.documentElement);
     const primaryColor = styles.getPropertyValue('--primary-color').trim() || '#ff6f61';
     const primaryDark = styles.getPropertyValue('--primary-dark').trim() || '#e55b50';
     const gradientStart = styles.getPropertyValue('--gradient-start').trim() || '#a8edea';
     const gradientEnd = styles.getPropertyValue('--gradient-end').trim() || '#fed6e3';
     const white = styles.getPropertyValue('--white').trim() || '#fff';
-
-    // 初始化奖项说明区（可选，若不需要可删除整个块）
-    const prizeMappingElement = document.getElementById('prizeMapping');
-    if (prizeMappingElement) {
-        Object.entries(prizeMapping).forEach(([key, { description, icon }], index) => {
-            const prizeCard = document.createElement('div');
-            prizeCard.classList.add('prize-card');
-            prizeCard.innerHTML = `
-                <div class="prize-icon">${icon}</div>
-                <div class="prize-description">${description}</div>
-                <div class="watermark">${index + 1}</div>
-            `;
-            prizeMappingElement.appendChild(prizeCard);
-        });
-    }
 
     // === 模态框控制 ===
     function showModal(icon, content) {
@@ -72,14 +56,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // === 转盘初始化 ===
     const prizes = Object.keys(prizeMapping);
     const myLucky = new LuckyCanvas.LuckyWheel('#my-lucky', {
-        width: 300,
-        height: 300,
-        blocks: [{ padding: '10px', background: primaryColor }],
+        width: 320,
+        height: 320,
+        blocks: [{ padding: '8px', background: primaryColor }],
         prizes: prizes.map((prize, index) => ({
             background: index % 2 === 0 ? gradientStart : gradientEnd,
             fonts: [
-                { text: prize, fontColor: primaryDark, fontWeight: '700', fontSize: '10px' },
-                { text: prizeMapping[prize].icon, top: '60%', fontSize: '12px' }
+                { text: prize, fontColor: primaryDark, fontWeight: '600', fontSize: '10px' },
+                { text: prizeMapping[prize].icon, top: '65%', fontSize: '18px' }
             ]
         })),
         buttons: [{
@@ -143,12 +127,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 id: now.getTime() + '-' + Math.random().toString(36).substr(2, 9)
             };
 
-            // 本地存储
             let logs = JSON.parse(localStorage.getItem('prizeLog')) || [];
             logs.push(logEntry);
             localStorage.setItem('prizeLog', JSON.stringify(logs));
 
-            // 上报服务器
             try {
                 await fetch('api/log-prize', {
                     method: 'POST',
@@ -163,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // === 直接显示转盘（跳过所有引导）===
+    // === 直接显示转盘 ===
     wheelContainer.style.display = 'flex';
     wheelContainer.classList.add('active');
 });
