@@ -54,31 +54,47 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // === 转盘初始化 ===
-    const prizes = Object.keys(prizeMapping);
-    const myLucky = new LuckyCanvas.LuckyWheel('#my-lucky', {
-        width: 500,
-        height: 500,
-        blocks: [{ padding: '8px', background: primaryColor }],
-        prizes: prizes.map((prize, index) => ({
-            background: index % 2 === 0 ? gradientStart : gradientEnd,
-            fonts: [
-                { text: prize, fontColor: primaryDark, fontWeight: '600', fontSize: '10px' },
-                { text: prizeMapping[prize].icon, top: '65%', fontSize: '18px' }
-            ]
-        })),
-        buttons: [{
-            radius: '15%',
-            background: primaryColor,
-            pointer: true,
-            fonts: [{ text: '开始', fontColor: white, fontWeight: 'bold', fontSize: '18px' }]
-        }],
-        start() {
-            console.log('转盘开始旋转');
-        },
-        end(prize) {
-            console.log('停止，抽中：', prize);
-        }
-    });
+// === 转盘初始化（适配 40 项）===
+const prizes = Object.keys(prizeMapping);
+const myLucky = new LuckyCanvas.LuckyWheel('#my-lucky', {
+    width: 600,
+    height: 600,
+    blocks: [{ padding: '4px', background: primaryColor }], // 减小 padding
+    prizes: prizes.map((prize, index) => ({
+        background: index % 2 === 0 ? gradientStart : gradientEnd,
+        fonts: [
+            // 极简标签：只显示“1”、“2”... 或留空
+            { 
+                text: (index + 1).toString(), // 显示数字更省空间
+                fontColor: primaryDark,
+                fontWeight: '600',
+                fontSize: '8px' // 关键：缩小字体
+            },
+            { 
+                text: prizeMapping[prize].icon,
+                top: '65%',
+                fontSize: '16px' // 图标可稍大，更醒目
+            }
+        ]
+    })),
+    buttons: [{
+        radius: '10%', // 进一步缩小
+        background: primaryColor,
+        pointer: true,
+        fonts: [{ 
+            text: '开始', 
+            fontColor: white, 
+            fontWeight: 'bold', 
+            fontSize: '16px' 
+        }]
+    }],
+    start() {
+        console.log('转盘开始旋转');
+    },
+    end(prize) {
+        console.log('停止，抽中：', prize);
+    }
+});
 
     // === 抽奖主函数 ===
     window.startGame = function () {
