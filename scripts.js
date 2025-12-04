@@ -56,8 +56,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // === 转盘初始化 ===
     const prizes = Object.keys(prizeMapping);
     const myLucky = new LuckyCanvas.LuckyWheel('#my-lucky', {
-        width: 320,
-        height: 320,
+        width: 500,
+        height: 500,
         blocks: [{ padding: '8px', background: primaryColor }],
         prizes: prizes.map((prize, index) => ({
             background: index % 2 === 0 ? gradientStart : gradientEnd,
