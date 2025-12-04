@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         end: function(prize) {
             // 转盘停止旋转
-            console.log('转盘停止，奖品是：', prize);
+            console.log('转盘停止，歌曲类型是：', prize);
         }
     });
 
@@ -232,13 +232,13 @@ document.addEventListener('DOMContentLoaded', () => {
     function showPrize(prize) {
         const prizeIcon = prizeMapping[prize].icon;
         const prizeText = prizeMapping[prize].description;
-        const message = `恭喜你抽中了奖品：${prizeText}，请找${contactPerson}兑换。`;
+        const message = `歌曲类型是：${prizeText}，请找${contactPerson}兑换。`;
         
         // 显示模态框
         showModal(prizeIcon, `
             <p>恭喜你抽中了：</p>
             <p><strong>${prizeText}</strong></p>
-            <p>请联系 <strong>${contactPerson}</strong> 兑换你的奖品！</p>
+            <p>请联系 <strong>${contactPerson}</strong> 兑换你的歌曲！</p>
         `);
         
         logPrize(prize, prizeText, prizeIcon, message).then(() => {
