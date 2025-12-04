@@ -65,7 +65,7 @@ const myLucky = new LuckyCanvas.LuckyWheel('#my-lucky', {
         fonts: [
             // 极简标签：只显示“1”、“2”... 或留空
             { 
-                text: prizeInfo.description, 
+                text: (index + 1).toString(), 
                 fontColor: primaryDark,
                 fontWeight: '600',
                 fontSize: '10px' // 关键：缩小字体
