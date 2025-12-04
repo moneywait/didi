@@ -68,13 +68,9 @@ const myLucky = new LuckyCanvas.LuckyWheel('#my-lucky', {
                 text: (index + 1).toString(), // 显示数字更省空间
                 fontColor: primaryDark,
                 fontWeight: '600',
-                fontSize: '8px' // 关键：缩小字体
+                fontSize: '10px' // 关键：缩小字体
             },
-            { 
-                text: prizeMapping[prize].icon,
-                top: '65%',
-                fontSize: '16px' // 图标可稍大，更醒目
-            }
+         
         ]
     })),
     buttons: [{
