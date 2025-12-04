@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ]
         })),
         buttons: [{
-            radius: '35%',
+            radius: '15%',
             background: primaryColor,
             pointer: true,
             fonts: [{ text: '开始', fontColor: white, fontWeight: 'bold', fontSize: '18px' }]
