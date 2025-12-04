@@ -37,5 +37,15 @@ const config = {
     '奖项28': { description: '电影原声', icon: '🎥' },
     '奖项29': { description: '节日氛围', icon: '🎄' },
     '奖项30': { description: '自由发挥！', icon: '🌈' }
+    '奖项31': { description: '乡村音乐', icon: '🤠' },
+    '奖项32': { description: '金属摇滚', icon: '🤘' },
+    '奖项33': { description: '轻音乐', icon: '🕊️' },
+    '奖项34': { description: '带颜色的歌', icon: '🎨' },
+    '奖项35': { description: '闽南语', icon: '🇹🇼' },
+    '奖项36': { description: '怀旧金曲', icon: '📻' },
+    '奖项37': { description: '二次元', icon: '👾' },
+    '奖项38': { description: '运动健身', icon: '🏃' },
+    '奖项39': { description: '雨天专属', icon: '☔' },
+    '奖项40': { description: '随机神曲', icon: '🃏' }
     }
 };
