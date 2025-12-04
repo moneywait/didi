@@ -32,24 +32,8 @@ body {
     box-sizing: border-box;
 }
 
-.wheel-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+.wheel-container, .animation-container {
     display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
-    z-index: 900;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-.wheel-container.active {
-    display: flex;
 }
 
 .active {
